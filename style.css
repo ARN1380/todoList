@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px auto;
+    background-color: lightgreen;
+}
+
+.search-row {
+
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+    /* overflow: auto; */
+}
+
+.item {
+    width: calc(100% - 60px);
+    padding: 30px;
+    margin: 5px;
+    background-color: blueviolet;
+}
+
+
+/* w3schools */
