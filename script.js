@@ -1,26 +1,20 @@
 const template = document.querySelector("template");
 const toDo = document.querySelector(".todo-list");
 const input = document.querySelector(".input-text")
+let taskModel = {
+    id: "0",
+    title: "my task",
+    dateCreated: "14010510",        
+    isDone: true
+};
 
-// let taskArray = [
-//     {
-//         id: "0",
-//         title: "my task",
-//         dateCreated: "14010510",        
-//         isDone: true
-//     },
-//     {
-//         id: "1",
-//         title: "my second task",
-//         dateCreated: "14010510",        
-//         isDone: false
-//     }
-// ]
+let taskArray = []
 
 let taskCount = 0;
 input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-       taskCreator();
+        taskCreator();
+        document.querySelector(".input-text").value = "";
     }
 });
 
@@ -29,27 +23,37 @@ function taskCreator () {
     const taskText = clone.querySelector(".p-class");
     const item = clone.querySelector(".item")
     taskText.textContent = document.querySelector(".input-text").value;
-    console.log("tasktest: ",taskText);
-
     item.id = "task"+taskCount
-    taskCount++;
 
-    console.log(clone);
+    //task array is filling here ->
+    taskModelClone = {...taskModel}
+    taskModelClone.id = taskCount;
+    taskModelClone.title = taskText.textContent; 
+    taskModelClone.dateCreated = new Date(); 
+    taskModelClone.isDone = false; 
+    
+    console.log(taskModelClone);
+    taskArray.push(taskModelClone);
+    console.log(taskArray);
+    
+    
+    taskCount++;
+    
     toDo.appendChild(clone);
 }
 
 function doneCheck (e) {
     let itemClicked = e.srcElement || e.target;
-    document.querySelector("#"+itemClicked.id).classList.add("item-done")        
-    // let isDone = true;
-    // if (isDone) {
-    //     let isDone = false;        
-    // } else {
-    //     let isDone = true;
-    // }
-    // console.log(isDone);
-    // if (isDone) {
-    // } else {
-    //     document.querySelector("#"+itemClicked.id).classList.remove("item-done")        
-    // }
+    let taskId = itemClicked.id.replace("task",""); 
+
+    if (!taskArray[taskId].isDone) {
+        document.querySelector("#"+itemClicked.id).classList.add("item-done")
+        taskArray[taskId].isDone = true;
+    } else {
+        document.querySelector("#"+itemClicked.id).classList.remove("item-done")
+        taskArray[taskId].isDone = false;
+    }
+    console.log(taskArray[taskId]);
+    
 }
+

@@ -42,5 +42,7 @@
     background-color: #fcbf49;
 }
 
+.p-class {
+    pointer-events: none;
+}
 
-/* w3schools */
