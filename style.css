@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
@@ -9,11 +10,16 @@
     flex-direction: column;
     align-items: center;
     margin: 50px auto;
-    background-color: lightgreen;
+    /* background-color: lightgreen; */
 }
 
 .search-row {
+    width: 100%;
+}
 
+.search-input {
+    padding: 20px 30px;
+    width: 100%;
 }
 
 .todo-list {
@@ -21,15 +27,19 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 10px;
+    margin-top: 40px;
     /* overflow: auto; */
 }
 
 .item {
-    width: calc(100% - 60px);
+    width: calc(100%);
     padding: 30px;
-    margin: 5px;
-    background-color: blueviolet;
+    margin: 5px 0px;
+    background-color: #eae2b7;
+}
+
+.item-done {
+    background-color: #fcbf49;
 }
 
 
