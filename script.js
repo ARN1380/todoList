@@ -7,10 +7,9 @@ let taskModel = {
     dateCreated: "14010510",        
     isDone: true
 };
-
 let taskArray = []
-
-let taskCount = 0;
+let taskCount = taskArray.length;
+readLocal()
 input.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
         taskCreator();
@@ -19,11 +18,13 @@ input.addEventListener("keypress", function(event) {
 });
 
 function taskCreator () {
+        
     const clone = template.content.cloneNode(true);
     const taskText = clone.querySelector(".p-class");
     const item = clone.querySelector(".item")
     taskText.textContent = document.querySelector(".input-text").value;
     item.id = "task"+taskCount
+        
 
     //task array is filling here ->
     taskModelClone = {...taskModel}
@@ -32,20 +33,22 @@ function taskCreator () {
     taskModelClone.dateCreated = new Date(); 
     taskModelClone.isDone = false; 
     
-    console.log(taskModelClone);
     taskArray.push(taskModelClone);
     console.log(taskArray);
     
-    
     taskCount++;
-    
+
     toDo.appendChild(clone);
+    
+    writeLocal();
+
 }
 
 function doneCheck (e) {
     let itemClicked = e.srcElement || e.target;
+    console.log(itemClicked.id);
     let taskId = itemClicked.id.replace("task",""); 
-
+    console.log(taskId);
     if (!taskArray[taskId].isDone) {
         document.querySelector("#"+itemClicked.id).classList.add("item-done")
         taskArray[taskId].isDone = true;
@@ -54,6 +57,36 @@ function doneCheck (e) {
         taskArray[taskId].isDone = false;
     }
     console.log(taskArray[taskId]);
+    writeLocal();
     
 }
 
+function writeLocal() {
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
+    console.log("writeLocal...");
+}
+
+function readLocal() {
+    taskArray = JSON.parse(localStorage.getItem("tasks") || "[]");
+    for (let i = 0; i < taskArray.length; i++) {
+        const clone = template.content.cloneNode(true);
+        const taskText = clone.querySelector(".p-class");
+        const item = clone.querySelector(".item")
+        taskText.textContent = taskArray[i].title;
+        item.id = "task"+taskCount
+        taskCount++;
+        toDo.appendChild(clone);
+        
+        if (taskArray[i].isDone) {
+            document.querySelector("#task"+i).classList.add("item-done")
+            taskArray[i].isDone = true;
+        } else {
+            document.querySelector("#task"+i).classList.remove("item-done")
+            taskArray[i].isDone = false;
+        }
+    }
+    console.log(taskArray);
+
+}
+
+// localStorage.clear()

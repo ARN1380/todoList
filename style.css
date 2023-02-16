@@ -17,7 +17,7 @@
     width: 100%;
 }
 
-.search-input {
+.input-text {
     padding: 20px 30px;
     width: 100%;
 }
@@ -32,7 +32,7 @@
 }
 
 .item {
-    width: calc(100%);
+    width: 100%;
     padding: 30px;
     margin: 5px 0px;
     background-color: #eae2b7;

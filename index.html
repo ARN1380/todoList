@@ -11,26 +11,25 @@
 <body>
     <div class="container">
         <div class="search-row">
-            <input type="text" class="search-input">
+            <input class="input-text" placeholder="task here ..." />
         </div>
         <div class="todo-list">  
-            <div class="item">
-                <p>we want to do good things! =)</p>
-            </div>
-            <div class="item">
-                <p>we want to do good things! =)</p>
-            </div>
+
         </div>
     </div>
 
-    <input class="input-text" placeholder="task here" />
-    
+    <button onclick="writeLocal()">write</button>
+    <button onclick="readLocal()">read</button>
+
     <!-- <form action="" onclick="getInput()" method="post">
         <input type="text" class="input-text">
     </form> -->
     <template>
         <div class="item" onclick="doneCheck(event)">
             <p class="p-class">we want to do good things! =)</p>
+            <div class="delete-icon">
+                <i class="fa-regular fa-square-minus">hastam</i>
+            </div>
         </div>
     </template>
 </body>
