@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #1f1e3b;
+}
+
 .container {
     width: 80vw;
     display: flex;
@@ -35,11 +39,14 @@
     width: 100%;
     padding: 30px;
     margin: 5px 0px;
-    background-color: #eae2b7;
+    background-color: #ABEDD8;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .item-done {
-    background-color: #fcbf49;
+    background-color: #3D84A8;
 }
 
 .p-class {

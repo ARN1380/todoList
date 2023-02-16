@@ -45,6 +45,7 @@ function taskCreator () {
 }
 
 function doneCheck (e) {
+    e.stopPropagation();
     let itemClicked = e.srcElement || e.target;
     console.log(itemClicked.id);
     let taskId = itemClicked.id.replace("task",""); 
